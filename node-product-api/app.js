@@ -1,17 +1,17 @@
 var http = require('http'); 
-var cors = require('cors')
+//const cors = require('cors')
 
 const express = require('express') 
 const app = express()
 const port = 3001
 
-app.use(cors())
+//app.use(cors())
 
 const { auth, requiredScopes } = require('express-oauth2-jwt-bearer');
 
 
 const checkJwt = auth({
-    audience: 'http://localhost:4200',
+    audience: 'https://localhost:4200',
     issuerBaseURL: `https://dev-aivd9uma.us.auth0.com`,
 });
 
@@ -63,12 +63,14 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cookieParser()); 
 
-app.get('/products', async (req, res, next) => { 
+const checkScopes = requiredScopes('openid');
+
+app.get('/products', checkJwt, checkScopes, async (req, res, next) => { 
     var resp = await db.getAllProducts();
     res.status(200).json(resp);
 });
 
-app.post('/products', async (req, res, next) => { 
+app.post('/products', checkJwt, checkScopes, async (req, res, next) => { 
 
     try{
         var name = req.body.name;
@@ -84,7 +86,7 @@ app.post('/products', async (req, res, next) => {
 });
 
 
-app.get('/products/:id', async (req, res, next) => { 
+app.get('/products/:id', checkJwt, checkScopes, async (req, res, next) => { 
 
     try{
         var id = req.params.id;
@@ -98,7 +100,7 @@ app.get('/products/:id', async (req, res, next) => {
     }
 });
 
-app.put('/products/:id', async (req, res, next) => { 
+app.put('/products/:id', checkJwt, checkScopes, async (req, res, next) => { 
 
     try{
         var id = req.params.id;
@@ -117,7 +119,7 @@ app.put('/products/:id', async (req, res, next) => {
     }
 });
 
-app.delete('/products/:id', async (req, res, next) => {
+app.delete('/products/:id', checkJwt, checkScopes, async (req, res, next) => {
 
     try{
         var id = req.params.id;

@@ -11,6 +11,6 @@ export class ApiService {
 
   ping$(): Observable<any> {
     console.log(config.apiUri);
-    return this.http.get(`${config.apiUri}/users`);
+    return this.http.get(`${config.apiUri}/products`);
   }
 }

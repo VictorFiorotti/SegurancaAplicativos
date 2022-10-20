@@ -23,10 +23,10 @@ if (
 app.use(morgan('dev'));
 app.use(helmet());
 app.use(
-  cors()
-  //{
-  //  origin: authConfig.appUri,
-  //})
+  cors(
+  {
+   origin: authConfig.appUri,
+  })
 );
 
 const checkJwt = jwt({

@@ -19,10 +19,10 @@ Antes de iniciarmos o desafio, faz-se necessário que seja configurada a integra
 O desafio consiste em mitigar as vulnerabilidades e vertentes de ataque conhecidas e exploradas durante a disciplina desta API, sendo estes:
 
 1. Mitigar Broken Authentication e Broken Access Control através da implementação de OAuth (0.2);
-2. Mitigar Man In The Middle/Sniffing através da implementação de comunicação via HTTPS (0.2);
-3. Mitigar Code Injection através da implementação de validação de campos de entrada e a utilização de Prepared Statements nas comunicações com o Banco de Dados (0.2);
-4. Mitigar Brute Force/Dictionary Attack através da implementação de RateLimit na API (0.2);
-5. Aplicação executando e funcionando corretamente (0.2). 
+2. Mitigar Man In The Middle/Sniffing através da implementação de comunicação via HTTPS (0.2); ok
+3. Mitigar Code Injection através da implementação de validação de campos de entrada e a utilização de Prepared Statements nas comunicações com o Banco de Dados (0.2); ok
+4. Mitigar Brute Force/Dictionary Attack através da implementação de RateLimit na API (0.2); ok
+5. Aplicação executando e funcionando corretamente (0.2). ok
 
 ## Executando a aplicação
 
